@@ -1,0 +1,5 @@
+e2fsprogs     make
+libjpeg-turbo make
+ncurses       make
+ntfs-3g       make
+zlib          make
