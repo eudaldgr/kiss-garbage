@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+# stricter default perms - bug 507436
+mkdir -p -m 0700 "$1/usr/share/lynis" "$1/etc/lynis"
+cp -r db include plugins "$1/usr/share/lynis"
+
+install -Dm755 lynis "$1/usr/sbin/lynis"
+install -Dm600 default.prf "$1/etc/lynis/default.prf"
+install -Dm600 lynis.cron "$1/etc/periodic/daily/lynis"
+
+# lynis-doc
+install -Dm644 CHANGELOG.md FAQ README -t "$1/usr/share/doc/lynis/"
+install -Dm644 lynis.8 "$1/usr/share/man/man8/lynis.8"
+
+mkdir -p "$1/usr/share/bash-completion/completions/"
+install -Dm644 extras/bash_completion.d/lynis \
+    "$1/usr/share/bash-completion/completions/lynis"
