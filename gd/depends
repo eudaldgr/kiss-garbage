@@ -1,0 +1,8 @@
+autoconf          make
+automake          make
+bash              make
+libpng            make
+libjpeg-turbo     make
+libwebp           make
+freetype-harfbuzz make
+zlib              make
