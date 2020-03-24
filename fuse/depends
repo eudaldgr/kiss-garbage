@@ -1,0 +1,4 @@
+eudev         make
+linux-headers make
+meson         make
+python        make
