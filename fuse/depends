@@ -1,0 +1,6 @@
+eudev         make
+gettext       make
+linux-headers make
+meson         make
+pkgconf       make
+python        make

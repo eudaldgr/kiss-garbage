@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+patch -p1 < fix-realpath.patch
+
+./makeconf.sh
+
+UDEV_RULES_PATH='/lib/udev/rules.d' ./configure \
+	--build=x86_64-pc-linux-musl \
+	--host=x86_64-pc-linux-musl \
+	--prefix=/usr \
+	--disable-static \
+	--enable-shared \
+	--disable-example \
+	--enable-lib \
+	--enable-util \
+	--bindir=/usr/bin
+
+make
+make DESTDIR="$1" install
