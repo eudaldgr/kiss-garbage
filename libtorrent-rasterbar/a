@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+cmake -B build \
+	-G Ninja
+
+ninja -C build
+ninja -C build install
