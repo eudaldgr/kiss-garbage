@@ -1,2 +1,2 @@
-https://github.com/libfuse/libfuse/archive/fuse-2.9.9.tar.gz
+https://github.com/libfuse/libfuse/archive/fuse-3.9.1.tar.gz
 patches/fix-realpath.patch
