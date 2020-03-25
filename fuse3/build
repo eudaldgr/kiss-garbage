@@ -20,4 +20,5 @@ ninja -C output
 ninja -C output	install
 
 chmod u+s "$1/usr/bin/fusermount3"
+#ln -sf "/usr/lib/pkgconfig/fuse3.pc" "$1/usr/lib/pkgconfig/fuse.pc"
 rm -rf "$1/etc/init.d/"
