@@ -1,8 +1,0 @@
-#!/bin/sh -e
-
-sed -i -e '/CFLAGS/{s/-Os//;s/=/+=/}' \
-    -e '/LDFLAGS/{s/-s//;s/=/+=/}' \
-    config.mk
-
-make
-make PREFIX=/usr DESTDIR="$1" install
