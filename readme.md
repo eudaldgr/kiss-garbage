@@ -1,3 +1,3 @@
-# kiss-repo
+# kiss-garbage
 
 ![Screenshot](screenshot.png)
