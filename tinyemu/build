@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+sed -i 's|bindir=/usr/local/bin|bindir=/usr/bin|g' Makefile
+
+mkdir -p "$1/usr/bin/"
+
+make DESTDIR="$1" install
