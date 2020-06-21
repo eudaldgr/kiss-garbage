@@ -1,0 +1,60 @@
+diff -Nru openjdk-boot.orig/corba/make/common/shared/Defs-java.gmk openjdk-boot/corba/make/common/shared/Defs-java.gmk
+--- openjdk-boot.orig/corba/make/common/shared/Defs-java.gmk	2018-05-23 00:38:22.950463481 +0100
++++ openjdk-boot/corba/make/common/shared/Defs-java.gmk	2018-05-23 02:03:19.165950214 +0100
+@@ -139,22 +139,10 @@
+ JAVACFLAGS  += $(OTHER_JAVACFLAGS)
+ 
+ # Langtools
+-ifdef LANGTOOLS_DIST
+-  JAVAC_JAR   = $(LANGTOOLS_DIST)/bootstrap/lib/javac.jar
+-  JAVADOC_JAR = $(LANGTOOLS_DIST)/bootstrap/lib/javadoc.jar
+-  DOCLETS_JAR = $(LANGTOOLS_DIST)/bootstrap/lib/doclets.jar
+-  JAVAC_CMD   = $(BOOT_JAVA_CMD) \
+-		"-Xbootclasspath/p:$(JAVAC_JAR)" \
+-		-jar $(JAVAC_JAR) $(JAVACFLAGS)
+-  JAVADOC_CMD = $(BOOT_JAVA_CMD) \
+-		"-Xbootclasspath/p:$(JAVADOC_JAR)$(CLASSPATH_SEPARATOR)$(JAVAC_JAR)$(CLASSPATH_SEPARATOR)$(DOCLETS_JAR)" \
+-		-jar $(JAVADOC_JAR)
+-else
+-  # If no explicit tools, use boot tools (add VM flags in this case)
+-  JAVAC_CMD     = $(JAVA_TOOLS_DIR)/javac $(JAVAC_JVM_FLAGS) \
+-		  $(JAVACFLAGS)
+-  JAVADOC_CMD   = $(JAVA_TOOLS_DIR)/javadoc $(JAVA_TOOLS_FLAGS:%=-J%)
+-endif
++# If no explicit tools, use boot tools (add VM flags in this case)
++JAVAC_CMD     = $(JAVA_TOOLS_DIR)/javac $(JAVAC_JVM_FLAGS) \
++	  $(JAVACFLAGS)
++JAVADOC_CMD   = $(JAVA_TOOLS_DIR)/javadoc $(JAVA_TOOLS_FLAGS:%=-J%)
+ 
+ # Override of what javac to use (see deploy workspace)
+ ifdef JAVAC
+diff -Nru openjdk-boot.orig/jdk/make/common/shared/Defs-java.gmk openjdk-boot/jdk/make/common/shared/Defs-java.gmk
+--- openjdk-boot.orig/jdk/make/common/shared/Defs-java.gmk	2012-06-29 15:21:00.000000000 +0100
++++ openjdk-boot/jdk/make/common/shared/Defs-java.gmk	2012-06-29 18:53:43.337711469 +0100
+@@ -179,27 +179,15 @@
+ # Langtools
+ ifdef LANGTOOLS_DIST
+-  JAVAC_JAR   = $(LANGTOOLS_DIST)/bootstrap/lib/javac.jar
+-  JAVAH_JAR   = $(LANGTOOLS_DIST)/bootstrap/lib/javah.jar
+   JAVADOC_JAR = $(LANGTOOLS_DIST)/bootstrap/lib/javadoc.jar
+   DOCLETS_JAR = $(LANGTOOLS_DIST)/bootstrap/lib/doclets.jar
+-  JAVAC_CMD   = $(BOOT_JAVA_CMD) \
+-        "-Xbootclasspath/p:$(JAVAC_JAR)" \
+-        -jar $(JAVAC_JAR) $(JAVACFLAGS)
+-  JAVAH_CMD   = $(BOOT_JAVA_CMD) \
+-        "-Xbootclasspath/p:$(JAVAH_JAR)$(CLASSPATH_SEPARATOR)$(JAVAC_JAR)"  \
+-        -jar $(JAVAH_JAR) $(JAVAHFLAGS)
+   JAVADOC_CMD = $(BOOT_JAVA_CMD) \
+         "-Xbootclasspath/p:$(JAVADOC_JAR)$(CLASSPATH_SEPARATOR)$(JAVAC_JAR)$(CLASSPATH_SEPARATOR)$(DOCLETS_JAR)" \
+         -jar $(JAVADOC_JAR) $(JAVADOCFLAGS)
+-else
+-  # If no explicit tools, use boot tools (add VM flags in this case)
+   JAVAC_CMD     = $(JAVA_TOOLS_DIR)/javac $(JAVAC_JVM_FLAGS) \
+           $(JAVACFLAGS)
+   JAVAH_CMD     = $(JAVA_TOOLS_DIR)/javah \
+           $(JAVAHFLAGS)
+-  JAVADOC_CMD   = $(JAVA_TOOLS_DIR)/javadoc $(JAVA_TOOLS_FLAGS:%=-J%) \
+-          $(JAVADOCFLAGS)
+ endif
+ 
+ # Override of what javac to use (see deploy workspace)

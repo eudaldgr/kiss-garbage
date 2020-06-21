@@ -1,0 +1,6 @@
+bash     make
+binutils
+bison    make
+fastjar
+flex     make
+zlib

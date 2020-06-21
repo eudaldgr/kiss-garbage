@@ -1,0 +1,224 @@
+--- old/Makefile.am
++++ new/Makefile.am
+@@ -1666,11 +1666,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch-fsg.stamp.tmp ; \
+ 	    then \
+@@ -1694,10 +1694,10 @@
+ 	  for p in $(ICEDTEA_FSG_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -1718,10 +1718,10 @@
+ 	do \
+ 	  if test x$${all_patches_ok} == "xyes" \
+ 	     && echo Checking $$p \
+-	     && $(PATCH) -l -p1 --dry-run -s -t -f -F 0 < $(abs_top_srcdir)/$$p ; \
++	     && $(PATCH) -p1 --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p1 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p1 < $(abs_top_srcdir)/$$p ; \
+ 	  else \
+ 	    test x$${all_patches_ok} == "xyes" && all_patches_ok=$$p ; \
+ 	  fi ; \
+@@ -1731,11 +1731,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch.stamp.tmp ; \
+ 	    then \
+@@ -1759,10 +1759,10 @@
+ 	  for p in $(ICEDTEA_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -1771,10 +1771,10 @@
+ 	  for p in $(OPENJDK_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p1 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p1 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p1 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p1 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -1861,11 +1861,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch-boot.stamp.tmp ; \
+ 	    then \
+@@ -1889,10 +1889,10 @@
+ 	  for p in $(ICEDTEA_BOOT_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+--- old/Makefile.in
++++ new/Makefile.in
+@@ -2107,11 +2107,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch-fsg.stamp.tmp ; \
+ 	    then \
+@@ -2135,10 +2135,10 @@
+ 	  for p in $(ICEDTEA_FSG_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -2159,10 +2159,10 @@
+ 	do \
+ 	  if test x$${all_patches_ok} == "xyes" \
+ 	     && echo Checking $$p \
+-	     && $(PATCH) -l -p1 --dry-run -s -t -f -F 0 < $(abs_top_srcdir)/$$p ; \
++	     && $(PATCH) -p1 --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p1 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p1 < $(abs_top_srcdir)/$$p ; \
+ 	  else \
+ 	    test x$${all_patches_ok} == "xyes" && all_patches_ok=$$p ; \
+ 	  fi ; \
+@@ -2172,11 +2172,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch.stamp.tmp ; \
+ 	    then \
+@@ -2200,10 +2200,10 @@
+ 	  for p in $(ICEDTEA_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -2212,10 +2212,10 @@
+ 	  for p in $(OPENJDK_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p1 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p1 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p1 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p1 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \
+@@ -2298,11 +2298,11 @@
+ 	do \
+ 	  if test x$${all_patches_ok} = "xyes" \
+ 	    && echo Checking $$p \
+-	    && $(PATCH) -l -p0 --dry-run -s -t -f \
+-	      -F 0 < $(abs_top_srcdir)/$$p ; \
++	    && $(PATCH) -p0 --dry-run \
++	      < $(abs_top_srcdir)/$$p ; \
+ 	  then \
+ 	    echo Applying $$p ; \
+-	    $(PATCH) -l -p0 < $(abs_top_srcdir)/$$p ; \
++	    $(PATCH) -p0 < $(abs_top_srcdir)/$$p ; \
+ 	    if ! grep "^\* $$(basename $$p)" $(abs_top_srcdir)/HACKING \
+ 	      >> stamps/patch-boot.stamp.tmp ; \
+ 	    then \
+@@ -2326,10 +2326,10 @@
+ 	  for p in $(ICEDTEA_BOOT_PATCHES) ; \
+ 	  do \
+ 	    echo Checking $$p ; \
+-	    if $(PATCH) -l -p0 -R --dry-run -s -t -f < $(abs_top_srcdir)/$$p ; \
++	    if $(PATCH) -p0 -R --dry-run < $(abs_top_srcdir)/$$p ; \
+ 	    then \
+ 	      echo Reverting $$p ; \
+-	      $(PATCH) -l -p0 -R < $(abs_top_srcdir)/$$p ; \
++	      $(PATCH) -p0 -R < $(abs_top_srcdir)/$$p ; \
+ 	    else \
+ 	      all_patches_ok=no ; \
+ 	    fi ; \

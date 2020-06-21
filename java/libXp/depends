@@ -1,0 +1,4 @@
+libXext   make
+libX11    make
+libXau    make
+xorgproto make

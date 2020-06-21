@@ -1,0 +1,94 @@
+#!/bin/sh -e
+
+# using ccache causes ICEs with pregenerated headers
+export CCACHE_DISABLE=1
+
+# We build on the icedtea dir
+cd icedtea
+
+# Busybox sha256 does not support longopts
+sed -e "s/--check/-c/g" -i Makefile.am
+
+cd extra
+for tarball in *.tar.bz2\?no-extract; do
+    mv -f "$tarball" "${tarball%%\?no-extract}"
+done
+cd ..
+
+# Patch it
+patch -p1 -i ../fix-xattr-include.patch
+patch -p1 -i ../busybox-patch.patch
+
+./autogen.sh
+
+export JOBS=$(nproc)
+export ALT_PARALLEL_COMPILE_JOBS="${JOBS:-2}"
+export HOTSPOT_BUILD_JOBS="${JOBS:-2}"
+
+export JAVA_HOME=/usr/lib/jvm/java-1.5-gcj
+export PATH=$JAVA_HOME/bin:$(pwd)/apache-ant/bin:$PATH
+
+# Explicitly set the C++ standard as the default has changed on GCC 6+
+# and disable optimizations that lead to a broken JVM. These options
+# has been adopted from the Fedora package.
+export EXTRA_CPP_FLAGS="$CXXFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-strict-overflow"
+# CXXFLAGS doesn't make it to all calls, so we set the C++ standard
+# version for C too.
+export EXTRA_CFLAGS="$CFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-strict-overflow"
+
+export DISTRIBUTION_PATCHES="patches/icedtea-cpio.patch \
+    patches/icedtea-hotspot-musl-ppc.patch \
+    patches/icedtea-hotspot-musl.patch \
+    patches/icedtea-hotspot-noagent-musl.patch \
+    patches/icedtea-hotspot-uclibc-fixes.patch \
+    patches/icedtea-jdk-execinfo.patch \
+    patches/icedtea-jdk-fix-build.patch \
+    patches/icedtea-jdk-fix-ipv6-init.patch \
+    patches/icedtea-jdk-musl.patch \
+    patches/icedtea-jdk-no-soname.patch \
+    patches/icedtea-jdk-xattr.patch \
+    patches/icedtea-pr64174.patch"
+
+./configure \
+    --build=x86_64-pc-linux-musl \
+    --host=x86_64-pc-linux-musl \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --localstatedir=/var \
+    --with-parallel-jobs=$(nproc) \
+    --disable-dependency-tracking \
+    --disable-system-kerberos \
+    --disable-system-pcsc \
+    --enable-native-debuginfo \
+    --disable-downloading \
+    --disable-Werror \
+	--enable-bootstrap \
+	--disable-hotspot-tests \
+	--disable-docs \
+	--disable-jdk-tests \
+	--disable-langtools-tests \
+	--disable-systemtap-tests \
+	--disable-tests \
+    --disable-arm32-jit \
+    --with-rhino=$(pwd)/rhino/rhino1.7.7.2/lib/rhino-1.7.7.2.jar \
+    --with-openjdk-src-zip=$(pwd)/extra/openjdk.tar.bz2 \
+    --with-hotspot-src-zip=$(pwd)/extra/hotspot.tar.bz2 \
+    --with-corba-src-zip=$(pwd)/extra/corba.tar.bz2 \
+    --with-jaxp-src-zip=$(pwd)/extra/jaxp.tar.bz2 \
+    --with-jaxws-src-zip=$(pwd)/extra/jaxws.tar.bz2 \
+    --with-jdk-src-zip=$(pwd)/extra/jdk.tar.bz2 \
+    --with-langtools-src-zip=$(pwd)/extra/langtools.tar.bz2 \
+    --with-jdk-home=/usr/lib/jvm/java-1.5-gcj \
+    --with-pkgversion="Kisslinux 7.221.2.6.18-r1"
+
+make -j1 SHELL=/bin/bash icedtea-boot
+
+mkdir -p "$1/usr/lib/jvm/java-1.7-openjdk"
+cp -a openjdk.build/j2sdk-image/* "$1/usr/lib/jvm/java-1.7-openjdk"
+rm -f "$1/usr/lib/jvm/java-1.7-openjdk/src.zip"
+
+# symlink to shared java cacerts store
+rm -f "$1/usr/lib/jvm/java-1.7-openjdk/jre/lib/security/cacerts"
+ln -sf /etc/ssl/certs/java/cacerts "$1/usr/lib/jvm/java-1.7-openjdk/jre/lib/security/cacerts"

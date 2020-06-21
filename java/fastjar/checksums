@@ -1,0 +1,4 @@
+f156abc5de8658f22ee8f08d7a72c88f9409ebd8c7933e9466b0842afeb2f145  fastjar-0.98.tar.gz
+93aa186b95f686e8bc383fea7e875aa2f71aeeda9fb4d74720c926c40b31658d  0001-Properly-zero-terminate-filename.patch
+9bbd0b5e3e2d41a87c454a29b3386e6e7aa7e56117f58e9a467fb9aff23b3aec  0002-Fix-write-return-value-check.patch
+d0f1c2014aeeca1f118fb424196be0add5b5d21182a9951788373f203c6df8cb  CVE-2010-2322.patch

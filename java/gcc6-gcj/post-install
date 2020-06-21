@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+cat > "/etc/profile.d/kiss_java.sh" <<END
+export JDK_BIN=/usr/lib/jvm/java-1.5-gcj/bin
+export JRE_BIN=/usr/lib/jvm/java-1.5-gcj/jre/bin
+export PATH="\$PATH:\$JDK_BIN:\$JRE_BIN:"
+END
+
+echo ""
+echo "# The PATH has been updated."
+echo "# You will need to source /etc/profile.d/kiss_java.sh or"
+echo "# spawn a new login shell to access the PATH immediately."
+echo "$ sh -l"
+echo ""

@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+./bootstrap
+
+./configure \
+    --prefix=/usr
+
+make
+make DESTDIR="$1" install
+
+mkdir -p "$1/usr/lib"
+mv "$1/usr/lib/lksctp-tools" "$1/usr/lib"
+
+mv "$1/usr/include/netinet/sctp.h.in" "$1/usr/include/netinet/sctp.h"

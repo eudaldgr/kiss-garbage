@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+for patch in *.patch; do
+    patch -p1 < $patch
+done
+
+./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info \
+	--localstatedir=/var
+
+make
+make DESTDIR="$1" install
+
+rm -rf "$1/usr/lib/charset.alias"
+rmdir -p "$1/usr/lib" 2>/dev/null || true

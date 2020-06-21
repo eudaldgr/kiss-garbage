@@ -1,0 +1,26 @@
+diff -Nru openjdk-boot.orig/corba/make/common/shared/Defs-java.gmk openjdk-boot/corba/make/common/shared/Defs-java.gmk
+--- openjdk-boot.orig/corba/make/common/shared/Defs-java.gmk	2008-10-22 18:45:43.000000000 +0100
++++ openjdk-boot/corba/make/common/shared/Defs-java.gmk	2008-10-22 18:49:29.000000000 +0100
+@@ -75,7 +75,9 @@
+ JAVAC_JVM_FLAGS    += $(JAVA_TOOLS_FLAGS:%=-J%)
+ 
+ # The jar -J options are special, must be added at the end of the command line
++ifneq (,$(JAR_KNOWS_J_OPTIONS))
+ JAR_JFLAGS       = $(JAVA_TOOLS_FLAGS:%=-J%)
++endif
+ 
+ # JAVA_TOOLS_DIR is the default location to find Java tools to run, if
+ #    langtools is not available.
+diff -Nru openjdk-boot.orig/jdk/make/common/shared/Defs-java.gmk openjdk-boot/jdk/make/common/shared/Defs-java.gmk
+--- openjdk-boot.orig/jdk/make/common/shared/Defs-java.gmk	2008-10-22 19:14:30.000000000 +0100
++++ openjdk-boot/jdk/make/common/shared/Defs-java.gmk	2008-10-22 19:15:00.000000000 +0100
+@@ -103,7 +103,9 @@
+ JAVAC_JVM_FLAGS    += $(JAVA_TOOLS_FLAGS:%=-J%)
+ 
+ # The jar -J options are special, must be added at the end of the command line
++ifneq (,$(JAR_KNOWS_J_OPTIONS))
+ JAR_JFLAGS       = $(JAVA_TOOLS_FLAGS:%=-J%)
++endif
+ 
+ # JAVA_TOOLS_DIR is the default location to find Java tools to run, if
+ #    langtools is not available.

@@ -1,0 +1,27 @@
+https://icedtea.classpath.org/download/source/icedtea-2.6.18.tar.xz                       icedtea
+https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.11-bin.tar.gz                 icedtea/apache-ant
+https://github.com/mozilla/rhino/releases/download/Rhino1_7_7_2_Release/rhino-1.7.7.2.zip icedtea/rhino
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/openjdk.tar.bz2?no-extract   icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/corba.tar.bz2?no-extract     icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/jaxp.tar.bz2?no-extract      icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/jaxws.tar.bz2?no-extract     icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/jdk.tar.bz2?no-extract       icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/langtools.tar.bz2?no-extract icedtea/extra
+https://icedtea.classpath.org/download/drops/icedtea7/2.6.18/hotspot.tar.bz2?no-extract   icedtea/extra
+patches/fix-xattr-include.patch
+patches/busybox-patch.patch
+files/icedtea-cpio.patch                                                                  icedtea/patches
+files/icedtea-hotspot-musl-ppc.patch                                                      icedtea/patches
+files/icedtea-hotspot-musl.patch                                                          icedtea/patches
+files/icedtea-hotspot-noagent-musl.patch                                                  icedtea/patches
+files/icedtea-hotspot-uclibc-fixes.patch                                                  icedtea/patches
+files/icedtea-jdk-execinfo.patch                                                          icedtea/patches
+files/icedtea-jdk-fix-build.patch                                                         icedtea/patches
+files/icedtea-jdk-fix-ipv6-init.patch                                                     icedtea/patches
+files/icedtea-jdk-musl.patch                                                              icedtea/patches
+files/icedtea-jdk-no-soname.patch                                                         icedtea/patches
+files/icedtea-jdk-xattr.patch                                                             icedtea/patches
+files/icedtea-pr64174.patch                                                               icedtea/patches
+files/generated-comments.patch                                                            icedtea/patches/boot
+files/bootstrap-tools.patch                                                               icedtea/patches/boot
+files/jopt.patch                                                                          icedtea/patches/boot

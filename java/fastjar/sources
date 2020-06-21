@@ -1,0 +1,4 @@
+https://download.savannah.gnu.org/releases/fastjar/fastjar-0.98.tar.gz
+patches/0001-Properly-zero-terminate-filename.patch
+patches/0002-Fix-write-return-value-check.patch
+patches/CVE-2010-2322.patch
