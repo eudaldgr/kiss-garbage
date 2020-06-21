@@ -1,0 +1,3 @@
+https://linux-libre.fsfla.org/pub/linux-libre/releases/5.7.2-gnu/linux-libre-5.7.2-gnu.tar.xz
+patches/kernel-no-perl.patch
+patches/gcc-10.patch
