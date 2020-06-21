@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+NOCONFIGURE=1 ./autogen.sh
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+	--localstatedir=/var \
+	--libexecdir=/usr/lib/upower \
+    --disable-static \
+	--disable-nls
+
+make
+make DESTDIR="$1" install

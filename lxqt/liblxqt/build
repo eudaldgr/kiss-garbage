@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DPULL_TRANSLATIONS=no
+
+make -C build
+make -C build \
+    DESTDIR="$1" \
+    install

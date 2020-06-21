@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+	--localstatedir=/var \
+	--libexecdir=/usr/lib/upower \
+    --disable-umockdev
+
+make
+make DESTDIR="$1" install

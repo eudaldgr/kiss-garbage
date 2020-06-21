@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure -C \
+    --prefix=/usr \
+    --with-extra-only
+
+for i in po; do
+	printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > "$i/Makefile"
+done
+
+make
+make DESTDIR="$1" install
+
+# Remove conflicting symlink with libfm.
+rm "$1/usr/include/libfm"

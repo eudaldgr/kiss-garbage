@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+mkdir -p "$1/usr/bin"
+mv gettext "$1/usr/bin/gettext"
+for i in xgettext msgmerge msgfmt; do
+    ln -sf /usr/bin/gettext "$1/usr/bin/$i"
+done

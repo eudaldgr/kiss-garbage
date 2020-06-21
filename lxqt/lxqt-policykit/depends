@@ -1,0 +1,3 @@
+cmake make
+liblxqt make
+polkit-qt-1 make
