@@ -1,3 +1,3 @@
-# kiss-garbage
+# kiss-repo
 
-![Screenshot](screenshot.png)
+A compilation of all my repositories
