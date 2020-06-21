@@ -1,6 +1,0 @@
-autoconf             make
-automake             make
-curl                 make
-fuse                 make
-libtorrent-rasterbar make
-python

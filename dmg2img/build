@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-patch -Np1 -i openssl-compatibility.patch
-
-sed -i 's/-o root -g root//g' Makefile
-
-make PREFIX=/usr DESTDIR="$1" install

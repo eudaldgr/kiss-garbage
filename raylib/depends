@@ -1,9 +1,0 @@
-cmake       make
-glfw
-libX11      make
-libXcursor  make
-libXinerama make
-libXrandr   make
-samurai     make
-xinput      make
-xorg-server make
