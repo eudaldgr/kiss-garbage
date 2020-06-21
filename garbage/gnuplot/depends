@@ -1,0 +1,7 @@
+cairo         make
+pango         make
+gd            make
+lua           make
+readline      make
+libpng        make
+libjpeg-turbo make

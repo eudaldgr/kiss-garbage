@@ -1,0 +1,7 @@
+cmake        make
+libXcursor
+libXi
+libXinerama
+libxkbcommon make
+libXrandr
+mesa         make

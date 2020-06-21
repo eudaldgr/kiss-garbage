@@ -1,0 +1,5 @@
+https://github.com/libgd/libgd/archive/gd-2.2.5.tar.gz
+patches/CVE-2018-1000222.patch
+patches/CVE-2018-5711.patch
+patches/CVE-2019-6977.patch
+patches/CVE-2019-6978.patch
