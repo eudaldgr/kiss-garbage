@@ -1,0 +1,33 @@
+#!/bin/sh -e
+
+autoreconf -vif
+
+sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-nls \
+    --disable-gtk-doc \
+    --disable-maintainer-mode \
+    --disable-schemas-install \
+    --without-gnome \
+    --without-psiconv \
+    --without-perl \
+    --without-python \
+    --without-gda \
+    --with-zlib \
+    --disable-static
+
+for i in po po-functions ; do
+    printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > "$i/Makefile"
+done
+
+make
+make DESTDIR="$1" install
+
+rm -rf "$1/etc/gconf"
+
+# no static archives
+find "$1" -name '*.la' -exec rm -rf {} +
