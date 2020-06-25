@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+export RUSTFLAGS="$RUSTFLAGS -C debuginfo=2"
+
+./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/librsvg \
+    --disable-static \
+    --enable-vala
+
+make
+make DESTDIR="$1" install
