@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --with-gtk3 \
+    --disable-default-plugins
+
+make
+make DESTDIR="$1" install
