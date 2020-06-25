@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+sed -i -e 's/gsf-gnome//' -e 's/thumbnailer//' Makefile.*
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --mandir=/usr/share/man \
+    --disable-static \
+    --without-gnome-vfs \
+    --without-bonobo \
+    --enable-introspection
+
+make
+make DESTDIR="$1" install
+
+rm -f "$1/usr/share/man/man1/gsf-office-thumbnailer.1"

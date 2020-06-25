@@ -1,0 +1,8 @@
+bzip2
+gdk-pixbuf    make
+glib
+intltool-fake make
+libffi
+libxml2
+xz
+zlib
