@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+libtoolize --force && \
+aclocal && \
+autoconf && \
+automake \
+    --add-missing \
+    --gnu
+
+sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static \
+    --enable-introspection
+
+printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > po/Makefile
+
+make
+make DESTDIR="$1" install

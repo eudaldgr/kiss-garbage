@@ -1,0 +1,46 @@
+atk
+bzip2
+cairo
+expat
+fontconfig
+freetype-harfbuzz
+fribidi
+gdk-pixbuf
+gettext-fake      make
+gtk+3             make
+glib
+gtk+3
+intltool-fake     make
+libgsf            make
+librsvg           make
+libX11
+libXau
+libXcomposite
+libXcursor
+libXdamage
+libXext
+libXfixes
+libXi
+libXinerama
+libXrandr
+libXrender
+libXslt
+libXxf86vm
+libdrm
+libepoxy
+libffi
+libgsf
+libjpeg-turbo
+libpng
+librsvg
+libwebp
+libxcb
+libxml2
+libxshmfence
+mesa
+pango
+pcre              make
+pixman
+tiff
+xz
+zlib
