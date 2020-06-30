@@ -9,6 +9,7 @@ go build \
         -X github.com/cli/cli/command.Version=v$2 \
         -X github.com/cli/cli/command.BuildDate=$(date +%Y-%m-%d)" \
     -o bin/gh \
+    -modcacherw \
     ./cmd/gh
 
 install -Dm755 bin/gh "$1/usr/bin/gh"
