@@ -17,7 +17,7 @@
 - [x] lxqt-globalkeys
 - [x] lxqt-notificationd
 - [x] lxqt-openssh-askpass
-- [ ] lxqt-panel
+- [x] lxqt-panel
 - [x] lxqt-policykit
 - [x] lxqt-powermanagement
 - [x] lxqt-qtplugin
