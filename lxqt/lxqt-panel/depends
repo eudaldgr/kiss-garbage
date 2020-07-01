@@ -1,1 +1,41 @@
-cmake make
+alsa-lib
+bzip2
+cmake             make
+dbus
+eudev
+expat
+freetype-harfbuzz
+glib
+icu
+kwindowsystem
+libICE
+libSM
+libX11
+libXScrnSaver
+libXau
+libXcomposite
+libXdamage
+libXext
+libXfixes
+libXrender
+libXxf86vm
+libdbusmenu-qt
+libdrm
+libexecinfo
+libffi
+liblxqt
+libpng
+libsysstat        make
+libxcb
+libxkbcommon
+libxshmfence
+lxqt-globalkeys   make
+mesa
+pcre2
+qt5
+qt5-svg
+qt5-x11extras
+solid
+xcb-util
+xcb-util-keysyms
+zlib

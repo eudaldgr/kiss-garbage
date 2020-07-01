@@ -1,7 +1,11 @@
 #!/bin/sh -e
 
 cmake -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCPULOAD_PLUGIN:BOOL=OFF \
+    -DSENSORS_PLUGIN:BOOL=OFF \
+    -DNETWORKMONITOR_PLUGIN:BOOL=OFF \
+    -DVOLUME_USE_PULSEAUDIO:BOOL=OFF
 
 make -C build
 make -C build \
