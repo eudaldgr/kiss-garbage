@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+mkdir -p "$1/usr/share/themes"
+
+for dir in Arc Arc-Darker Arc-Dark; do
+    cp -R "common/openbox/$dir/openbox-3" "$1/usr/share/themes/$dir"
+done
+
+install -Dm755 common/index/dark/index.theme   "$1/usr/share/themes/Arc-Dark/index.theme"
+install -Dm755 common/index/darker/index.theme "$1/usr/share/themes/Arc-Darker/index.theme"
+install -Dm755 common/index/light/index.theme  "$1/usr/share/themes/Arc/index.theme"
