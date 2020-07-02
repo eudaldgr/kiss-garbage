@@ -1,8 +1,10 @@
 #!/bin/sh -e
 
-python3 setup.py build
-python3 setup.py install \
+python setup.py build
+python setup.py install \
     --prefix=/usr \
-    --root="$1"
+    --root="$1" \
+    --optimize=1 \
+    --skip-build
 
 install -Dm755 bin "$1/usr/bin/tg"
