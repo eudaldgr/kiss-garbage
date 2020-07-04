@@ -1,0 +1,14 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --disable-static \
+    --disable-dependency-tracking \
+    --enable-fast-install
+
+make
+make -j1 DESTDIR="$1" install
+
+for lang in en_AG en_AU en_BS en_BW en_BZ en_CA en_DK en_GB en_GH en_HK en_IE en_IN en_JM en_NA en_NZ en_PH en_SG en_TT en_ZA en_ZW; do
+    ln -s hyph_en_US.dic "$1/usr/share/hyphen/hyph_$lang.dic"
+done
