@@ -3,7 +3,13 @@
 ./configure \
     --prefix=/usr \
     --with-gtk3 \
-    --disable-default-plugins
+    --enable-shared \
+    --disable-static \
+    --enable-plugins="applix babelfish bmp clarisworks collab docbook command \
+        eml epub freetranslation garble gdict gimp google hancom hrtext iscii \
+        kword latex loadbindings mht mif mswrite openwriter openxml opml paint \
+        passepartout pdb pdf presentation s5 sdw t602 urldict wikipedia wml \
+        xslfo"
 
 make
 make DESTDIR="$1" install

@@ -7,6 +7,7 @@ freetype-harfbuzz
 fribidi
 gdk-pixbuf
 glib
+goffice
 gtk+3
 libX11
 libXau
@@ -24,6 +25,8 @@ libXxf86vm
 libdrm
 libepoxy
 libffi
+libgcrypt
+libgpg-error
 libgsf
 libjpeg-turbo
 libpng
@@ -33,8 +36,10 @@ libxcb
 libxml2
 libxshmfence
 mesa
+ncurses
 pango
 pixman
+readline
 tiff
 wv
 xz
