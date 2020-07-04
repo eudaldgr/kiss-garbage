@@ -1,0 +1,9 @@
+libICE
+libSM
+libX11
+libXau
+libXext
+libXmu
+libXpm
+libXt
+libxcb
