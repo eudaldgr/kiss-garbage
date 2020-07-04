@@ -6,4 +6,4 @@ DESTDIR="$1"
 CFLAGS=$CFLAGS -fPIC
 EOF
 
-make -j$(nproc) all install
+make -j"$(nproc)" all install
