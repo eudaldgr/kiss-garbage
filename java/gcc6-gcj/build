@@ -107,7 +107,7 @@ CONFIG_SHELL=/bin/bash \
     --disable-libssp \
     --disable-symvers
 
-make -j$(nproc)
+make -j"$(nproc)"
 make DESTDIR="$1" install
 
 if [ -e "$1/usr/lib64" ]; then

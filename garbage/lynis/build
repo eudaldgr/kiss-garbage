@@ -1,7 +1,8 @@
 #!/bin/sh -e
 
 # stricter default perms - bug 507436
-mkdir -p -m 0700 "$1/usr/share/lynis" "$1/etc/lynis"
+mkdir -p   "$1/usr/share/lynis" "$1/etc/lynis"
+chmod 0700 "$1/usr/share/lynis" "$1/etc/lynis"
 cp -r db include plugins "$1/usr/share/lynis"
 
 install -Dm755 lynis "$1/usr/sbin/lynis"

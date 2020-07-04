@@ -11,7 +11,7 @@ cd ..
 # Patch it
 patch -Np1 -i patches/zero-ppc32.patch
 for patch in patches/musl_*.patch; do
-    patch -Np1 -i $patch
+    patch -Np1 -i "$patch"
 done
 
 # remove not compilable module (hotspot jdk.hotspot.agent)
@@ -45,8 +45,8 @@ CFLAGS='' CXXFLAGS='' LDFLAGS='' \
     --with-giflib=system \
     --with-libpng=system \
     --with-lcms=system \
-    --with-jobs=${JOBS:-4} \
-    --with-test-jobs=${JOBS:-4} \
+    --with-jobs="${JOBS:-4}" \
+    --with-test-jobs="${JOBS:-4}" \
     --with-native-debug-symbols=none \
     --with-jtreg=no \
     --disable-warnings-as-errors \

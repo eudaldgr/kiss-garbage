@@ -20,5 +20,5 @@ DESTDIR="$1" ninja -C build install
 
 # Also package header files
 for f in build/src/*.h; do
-  install -Dm 644 "$f" "$1/usr/include/$(basename $f)"
+  install -Dm 644 "$f" "$1/usr/include/$(basename "$f")"
 done

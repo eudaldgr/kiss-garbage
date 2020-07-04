@@ -57,7 +57,7 @@ export DISTRIBUTION_PATCHES="patches/icedtea-cpio.patch \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
     --localstatedir=/var \
-    --with-parallel-jobs=$(nproc) \
+    --with-parallel-jobs="$(nproc)" \
     --disable-dependency-tracking \
     --disable-system-kerberos \
     --disable-system-pcsc \
@@ -72,14 +72,14 @@ export DISTRIBUTION_PATCHES="patches/icedtea-cpio.patch \
 	--disable-systemtap-tests \
 	--disable-tests \
     --disable-arm32-jit \
-    --with-rhino=$(pwd)/rhino/rhino1.7.7.2/lib/rhino-1.7.7.2.jar \
-    --with-openjdk-src-zip=$(pwd)/extra/openjdk.tar.bz2 \
-    --with-hotspot-src-zip=$(pwd)/extra/hotspot.tar.bz2 \
-    --with-corba-src-zip=$(pwd)/extra/corba.tar.bz2 \
-    --with-jaxp-src-zip=$(pwd)/extra/jaxp.tar.bz2 \
-    --with-jaxws-src-zip=$(pwd)/extra/jaxws.tar.bz2 \
-    --with-jdk-src-zip=$(pwd)/extra/jdk.tar.bz2 \
-    --with-langtools-src-zip=$(pwd)/extra/langtools.tar.bz2 \
+    --with-rhino="$(pwd)/rhino/rhino1.7.7.2/lib/rhino-1.7.7.2.jar" \
+    --with-openjdk-src-zip="$(pwd)/extra/openjdk.tar.bz2" \
+    --with-hotspot-src-zip="$(pwd)/extra/hotspot.tar.bz2" \
+    --with-corba-src-zip="$(pwd)/extra/corba.tar.bz2" \
+    --with-jaxp-src-zip="$(pwd)/extra/jaxp.tar.bz2" \
+    --with-jaxws-src-zip="$(pwd)/extra/jaxws.tar.bz2" \
+    --with-jdk-src-zip="$(pwd)/extra/jdk.tar.bz2" \
+    --with-langtools-src-zip="$(pwd)/extra/langtools.tar.bz2" \
     --with-jdk-home=/usr/lib/jvm/java-1.5-gcj \
     --with-pkgversion="Kisslinux 7.221.2.6.18-r1"
 
