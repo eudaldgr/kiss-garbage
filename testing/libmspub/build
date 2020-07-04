@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+patch -Np1 -i libmspub-0.1.4-gcc10.patch
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --localstatedir=/var 
+
+make
+make DESTDIR="$1" install
