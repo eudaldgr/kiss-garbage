@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+export CXXFLAGS="$CXXFLAGS -Wno-error=deprecated-copy"
+
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --localstatedir=/var
+
+make
+make DESTDIR="$1" install
