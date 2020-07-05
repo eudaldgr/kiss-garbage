@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --localstatedir=/var \
+    --disable-gegl
+
+make
+make DESTDIR="$1" install
