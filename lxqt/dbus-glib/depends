@@ -1,0 +1,6 @@
+dbus
+expat
+glib
+libexecinfo
+libffi
+zlib

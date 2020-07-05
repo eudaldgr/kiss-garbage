@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/dbus-glib \
+    --sysconfdir=/etc \
+    --disable-static
+
+make
+make DESTDIR="$1" install
