@@ -1,12 +1,11 @@
 #!/bin/sh -e
 
-NOCONFIGURE=1 ./autogen.sh
-
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-	--localstatedir=/var \
 	--libexecdir=/usr/lib/upower \
+	--localstatedir=/var \
+    --enable-deprecated \
     --disable-static \
 	--disable-nls
 
