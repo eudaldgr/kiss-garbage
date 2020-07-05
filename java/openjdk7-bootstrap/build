@@ -9,11 +9,15 @@ cd icedtea
 # Busybox sha256 does not support longopts
 sed -e "s/--check/-c/g" -i Makefile.am
 
-cd extra
-for tarball in *.tar.bz2\?no-extract; do
-    mv -f "$tarball" "${tarball%%\?no-extract}"
-done
-cd ..
+{
+    cd extra
+
+    for tarball in *.tar.bz2\?no-extract; do
+        mv -f "$tarball" "${tarball%%\?no-extract}"
+    done
+
+    cd ..
+}
 
 # Patch it
 patch -p1 -i ../fix-xattr-include.patch
@@ -21,12 +25,14 @@ patch -p1 -i ../busybox-patch.patch
 
 ./autogen.sh
 
-export JOBS=$(nproc)
+JOBS="$(nproc)"
+export JOBS
 export ALT_PARALLEL_COMPILE_JOBS="${JOBS:-2}"
 export HOTSPOT_BUILD_JOBS="${JOBS:-2}"
 
 export JAVA_HOME=/usr/lib/jvm/java-1.5-gcj
-export PATH=$JAVA_HOME/bin:$(pwd)/apache-ant/bin:$PATH
+PATH="$JAVA_HOME/bin:$(pwd)/apache-ant/bin:$PATH"
+export PATH
 
 # Explicitly set the C++ standard as the default has changed on GCC 6+
 # and disable optimizations that lead to a broken JVM. These options

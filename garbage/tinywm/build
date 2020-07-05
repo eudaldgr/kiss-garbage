@@ -4,6 +4,6 @@ export CC=gcc
 export PREFIX=/usr
 export CFLAGS="-Os -pedantic -Wall"
 
-mkdir -p "$1/${PREFIX}/bin"
+mkdir -p "$1/$PREFIX/bin"
 
-${CC} ${CFLAGS} -I${PREFIX}/include tinywm.c -L${PREFIX}/lib -lX11 -o "$1/${PREFIX}/bin/tinywm"
+${CC} $CFLAGS -I"$PREFIX/include" tinywm.c -L"$PREFIX/lib" -lX11 -o "$1/$PREFIX/bin/tinywm"
