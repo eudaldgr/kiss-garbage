@@ -1,0 +1,4 @@
+glib
+libX11
+libpng
+meson  make
