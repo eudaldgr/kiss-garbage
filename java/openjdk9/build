@@ -1,12 +1,16 @@
 #!/bin/sh -e
 
-cd openjdk/extra
-for i in corba hotspot jaxp jaxws jdk langtools nashorn; do
-    mv jdk-9.0.4+12.tar.bz2\?no-$i jdk-9.0.4+12-$i.tar.bz2
-    mkdir -p ../$i
-    tar -C ../$i --strip-components=1 -jxf jdk-9.0.4+12-$i.tar.bz2
-done
-cd ..
+{
+    cd openjdk/extra
+
+    for i in corba hotspot jaxp jaxws jdk langtools nashorn; do
+        mv jdk-9.0.4+12.tar.bz2\?no-$i jdk-9.0.4+12-$i.tar.bz2
+        mkdir -p ../$i
+        tar -C ../$i --strip-components=1 -jxf jdk-9.0.4+12-$i.tar.bz2
+    done
+
+    cd ..
+}
 
 # Patch it
 patch -Np1 -i patches/zero-ppc32.patch
@@ -28,36 +32,34 @@ export ldpath="/usr/lib/jvm/java-9-openjdk/lib:/usr/lib/jvm/java-9-openjdk/lib/j
 #  --with-extra-ldflags="$LDFLAGS"
 # See also paragraph "Configure Control Variables" from "common/doc/building.md"
 # shellcheck disable=2097 disable=2098
-echo "configure"
 CFLAGS='' CXXFLAGS='' LDFLAGS='' \
     bash ./configure \
-    --openjdk-target="x86_64-linux-musl" \
-    --prefix=/usr/lib/jvm/java-9-openjdk \
-    --sysconfdir=/etc \
-    --mandir=/usr/share/man \
-    --infodir=/usr/share/info \
-    --localstatedir=/var \
-    --with-extra-cflags="$CFLAGS" \
-    --with-extra-cxxflags="$CXXFLAGS" \
-    --with-extra-ldflags="$LDFLAGS" \
-    --with-zlib=system \
-    --with-libjpeg=system \
-    --with-giflib=system \
-    --with-libpng=system \
-    --with-lcms=system \
-    --with-jobs="${JOBS:-4}" \
-    --with-test-jobs="${JOBS:-4}" \
-    --with-native-debug-symbols=none \
-    --with-jtreg=no \
-    --disable-warnings-as-errors \
-    --disable-precompiled-headers \
-    --enable-dtrace=no \
-    --with-jvm-variants=server \
-    --with-debug-level=release \
-    --with-version-pre= \
-    --with-version-opt="kiss-r1" \
-    --with-version-build=12
-echo "make"
+        --openjdk-target="x86_64-linux-musl" \
+        --prefix=/usr/lib/jvm/java-9-openjdk \
+        --sysconfdir=/etc \
+        --mandir=/usr/share/man \
+        --infodir=/usr/share/info \
+        --localstatedir=/var \
+        --with-extra-cflags="$CFLAGS" \
+        --with-extra-cxxflags="$CXXFLAGS" \
+        --with-extra-ldflags="$LDFLAGS" \
+        --with-zlib=system \
+        --with-libjpeg=system \
+        --with-giflib=system \
+        --with-libpng=system \
+        --with-lcms=system \
+        --with-jobs="${JOBS:-4}" \
+        --with-test-jobs="${JOBS:-4}" \
+        --with-native-debug-symbols=none \
+        --with-jtreg=no \
+        --disable-warnings-as-errors \
+        --disable-precompiled-headers \
+        --enable-dtrace=no \
+        --with-jvm-variants=server \
+        --with-debug-level=release \
+        --with-version-pre= \
+        --with-version-opt="kiss-r1" \
+        --with-version-build=12
 MAKEFLAGS='' make jdk-image
 
 mkdir -p "$1/usr/lib/jvm/java-9-openjdk"

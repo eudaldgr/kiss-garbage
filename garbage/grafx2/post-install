@@ -1,4 +1,0 @@
-#!/bin/sh
-
-install -d "$1/usr/share/grafx2/scripts/samples_2.4/pictures/"{thomson/lib,others-8bit/lib}
-mv "$1/usr/bin/grafx2-sdl2" "$1/usr/bin/grafx2"
