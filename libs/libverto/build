@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+autoreconf -i
+
+./configure \
+    --prefix=/usr \
+    --with-libev \
+    --with-libevent
+
+make
+make DESTDIR="$1" install
