@@ -1,19 +1,9 @@
 #!/bin/sh -e
 
-# disable the gimp head in the toolbox by default
-#patch -p1 -i gimp-toolbox-wilber.patch
-#sed -i 's@^[[:space:]]*-I$(includedir)@@' $(find . -name Makefile.in)
-#sed -i 's@^libgimpui = .*$@libgimpui = $(top_builddir)/libgimp/libgimpui-$(GIMP_API_VERSION).la $(top_builddir)/libgimpmodule/libgimpmodule-$(GIMP_API_VERSION).la@' $(find plug-ins/ -name Makefile.in)
-#printf "#!/bin/sh\necho -lfreetype -I$1/usr/include/freetype2\n" > freetype-config
-#chmod +x freetype-config
-#export PATH="$PWD:$PATH"
-
 sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
 sed -i "s/if test \"x\$have_required_xgettext\" \= \"xno\"; then/if test -z \"x\$have_required_xgettext\" \= \"xno\"; then/g" configure
 
-CPPFLAGS="-D_GNU_SOURCE" CFLAGS="" CXXFLAGS="" \
-LDFLAGS="-Wl,-rpath-link=$1/usr/lib" \
-  ./configure -C \
+./configure -C \
     --prefix=/usr \
     --sysconfdir=/etc \
     --mandir=/usr/share/man \
@@ -28,8 +18,7 @@ LDFLAGS="-Wl,-rpath-link=$1/usr/lib" \
     --disable-dependency-tracking \
     --enable-gimp-console \
     --without-aa \
-    --disable-check-update \
-    --with-lcms=lcms2
+    --disable-check-update
 
 for i in po po-plug-ins po-python po-libgimp po-script-fu po-tips; do
     printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > "$i/Makefile"
