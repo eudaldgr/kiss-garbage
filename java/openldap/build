@@ -1,0 +1,58 @@
+#!/bin/sh -e
+
+sed -i '/^STRIP/s,-s,,g' build/top.mk
+libtoolize --force && aclocal && autoconf
+
+./configure \
+    --prefix=/usr \
+    --libexecdir=/usr/lib \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --localstatedir=/var/lib/openldap \
+    --enable-slapd \
+    --enable-crypt \
+    --enable-spasswd \
+    --enable-modules \
+    --enable-dynamic \
+    --disable-bdb \
+    --enable-dnssrv=mod \
+    --disable-hdb \
+    --enable-ldap=mod \
+    --enable-mdb=mod \
+    --enable-meta=mod \
+    --enable-monitor=mod \
+    --enable-null=mod \
+    --enable-passwd=mod \
+    --enable-relay=mod \
+    --enable-shell=mod \
+    --enable-sock=mod \
+    --disable-sql \
+    --enable-overlays=mod \
+    --with-tls=openssl \
+    --with-cyrus-sasl
+
+make
+
+
+# Build MQTT overlay.
+make \
+    prefix=/usr \
+    libexec=/usr/lib \
+	-C \
+    contrib/slapd-modules/mqtt
+
+# Build passwd pbkdf2.
+make \
+    prefix=/usr \
+    libexecdir=/usr/lib \
+	-C \
+    contrib/slapd-modules/passwd/pbkdf2
+
+# Build passwd sha2.
+make \
+    prefix=/usr \
+    libexecdir=/usr/lib \
+	-C \
+    contrib/slapd-modules/passwd/sha2
+
+make DESTDIR="$1" install

@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+patch -Np1 -i fix-build-without-NLS.patch
+
+./configure \
+    --prefix=/usr \
+    --disable-nls
+
+make
+make DESTDIR="$1" install

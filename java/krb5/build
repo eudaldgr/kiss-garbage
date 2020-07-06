@@ -1,0 +1,24 @@
+#!/bin/sh -e
+
+patch -Np0 -i libressl.patch
+patch -Np0 -i mit-krb5_krb5-config_LDFLAGS.patch
+
+sed -i "/KRB5ROOT=/s/\/local//" src/util/ac_check_krb5.m4
+
+./src/configure \
+    CPPFLAGS="$CPPFLAGS -fPIC -I/usr/include/et" \
+    WARN_CFLAGS= \
+    --prefix=/usr \
+    --localstatedir=/var/lib \
+    --enable-shared \
+    --disable-nls \
+    --disable-static \
+	--disable-rpath \
+    --with-system-et \
+    --with-system-ss \
+    --with-system-verto \
+    --without-tcl \
+    --with-ldap
+
+make
+make DESTDIR="$1" install
