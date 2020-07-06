@@ -16,7 +16,7 @@ entry_points = \
 {'console_scripts': ['tg = tg.main:main']}
 
 setup(name='tg',
-      version='0.2.0',
+      version='0.3.0',
       description='Terminal client for telegram',
       author='Paul Nameless',
       author_email='reacsdas@gmail.com',
