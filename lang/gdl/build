@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-static
+
+make
+make DESTDIR="$1" install
