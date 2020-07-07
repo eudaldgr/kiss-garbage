@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+export CXXFLAGS="$CXXFLAGS -std=c++11"
+
+patch -p1 -i fix-Werror.patch
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -DENABLE_POPPLER_CAIRO=ON \
+    -DPOPPLER_INCLUDE_DIR=/usr/include/poppler \
+    -DBUILD_SHARED_LIBS=True \
+    -DBUILD_STATIC_LIBS=False \
+    -DBUILD_TESTS=OFF \
+    -DWITH_GNOME_VFS=OFF \
+    -DWITH_NLS=OFF \
+    -DWITH_DBUS=OFF \
+    -DWITH_LIBCDR=OFF \
+    -DWITH_LIBVISIO=OFF \
+    -DWITH_LIBWPG=OFF \
+    -DWITH_IMAGE_MAGICK=OFF
+
+cmake --build   build
+cmake --install build
