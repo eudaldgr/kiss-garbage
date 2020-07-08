@@ -6,7 +6,7 @@
 
 ```
 $ # This repository needs official KISSLinux community enabled.
-$ # Some packages like `lxqt` needs also the [KISS-kde](https://github.com/dilyn-corner/KISS-kde) repository.
+$ # Some packages like `lxqt` and `pingus` needs also the KISS-kde or kiss-games repositories.
 
 $ git clone https://github.com/eudaldgr/kiss-repo
 $ cd kiss-repo
@@ -34,7 +34,7 @@ $ kiss b <pkg> && kiss i <pkg>
 `btfs` `btpd`
 
 :space_invader: **Games:**
-`mgba`
+`mgba` `pingus`
 
 :coffee: **Java:**
 `gcc6-gcj`
