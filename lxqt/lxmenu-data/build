@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+for patch in *.patch; do
+    patch -Np1 < "$patch"
+done
 
 ./configure \
     --prefix=/usr \

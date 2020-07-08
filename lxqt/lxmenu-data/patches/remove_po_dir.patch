@@ -1,0 +1,20 @@
+--- old/Makefile.am
++++ new/Makefile.am
+@@ -1,7 +1,6 @@
+ NULL =
+ 
+ SUBDIRS = 			\
+-	po 			\
+ 	layout			\
+ 	desktop-directories	\
+ 	$(NULL)
+--- old/Makefile.in
++++ new/Makefile.in
+@@ -304,7 +304,6 @@
+ top_srcdir = @top_srcdir@
+ NULL = 
+ SUBDIRS = \
+-	po 			\
+ 	layout			\
+ 	desktop-directories	\
+ 	$(NULL)

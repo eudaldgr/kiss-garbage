@@ -1,1 +1,3 @@
 https://downloads.sourceforge.net/sourceforge/lxde/lxmenu-data-0.1.5.tar.xz
+patches/fix-intltool.patch
+patches/remove_po_dir.patch
