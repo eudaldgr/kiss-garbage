@@ -1,0 +1,13 @@
+bzip2
+expat
+fontconfig
+freetype-harfbuzz
+glib
+libX11
+libXau
+libXft
+libXrender
+libpng
+libxcb
+ncurses
+zlib
