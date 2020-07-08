@@ -1,13 +1,16 @@
 #!/bin/sh -e
 
-sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
-sed -i "s/if test \"x\$have_required_xgettext\" \= \"xno\"; then/if test -z \"x\$have_required_xgettext\" \= \"xno\"; then/g" configure
+for patch in *.patch; do
+    patch -Np1 -i "$patch"
+done
 
-./configure -C \
+./configure \
     --prefix=/usr \
+    --libexecdir=/usr/bin \
     --sysconfdir=/etc \
     --mandir=/usr/share/man \
     --disable-altivec \
+    --disable-static \
     --disable-python \
     --disable-alsatest \
     --disable-nls \
@@ -20,9 +23,7 @@ sed -i "s/if test \"x\$have_required_xgettext\" \= \"xno\"; then/if test -z \"x\
     --without-aa \
     --disable-check-update
 
-for i in po po-plug-ins po-python po-libgimp po-script-fu po-tips; do
-    printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > "$i/Makefile"
-done
-
 make -j"$(nproc)"
 make DESTDIR="$1" install
+
+rm -rf "$1/usr/share/gtk-doc"

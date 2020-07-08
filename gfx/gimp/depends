@@ -13,7 +13,6 @@ freetype-harfbuzz
 fribidi
 gdk-pixbuf
 gegl
-gettext
 gexiv2
 ghostscript
 glib

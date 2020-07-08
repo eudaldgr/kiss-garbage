@@ -1,1 +1,4 @@
 http://download.gimp.org/pub/gimp/v2.10/gimp-2.10.20.tar.bz2
+patches/fix_intltool.patch
+patches/remove_glib_networking.patch
+patches/remove_po_dir.patch
