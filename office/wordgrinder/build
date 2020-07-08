@@ -2,7 +2,7 @@
 
 patch -Np1 -i fixes-musl.patch
 
-sed -i '7s!$(HOME)!'$1'/usr!' Makefile
+sed -i "7s!\$(HOME)!$1/usr!" Makefile
 
 make
 make PREFIX=/usr DESTDIR="$1" install
