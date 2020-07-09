@@ -40,7 +40,7 @@ $ kiss b <pkg> && kiss i <pkg>
 `gcc6-gcj`
 
 :iphone: **Chat:**
-`tg` `birch`
+`birch`
 
 :pencil2: **Image editor:**
 `gimp` `grafx2`
