@@ -1,0 +1,16 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+meson \
+    --prefix=/usr \
+    --buildtype=plain \
+    -Denable_tests=false \
+    -Denable_tools=true \
+    -Dfuzzing_engine=none \
+    -Dtestdata_tests=false \
+    -Denable_asm=true \
+    . build
+
+ninja -C build
+ninja -C build install
