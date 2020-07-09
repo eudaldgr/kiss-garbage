@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --disable-static \
+    --enable-shared \
+    --with-libdvdcss
+
+make
+make DESTDIR="$1" install
