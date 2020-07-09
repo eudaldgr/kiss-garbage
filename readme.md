@@ -48,6 +48,9 @@ $ kiss b <pkg> && kiss i <pkg>
 :black_nib: **Vector graphics editor:**
 `inkscape`
 
+:movie_camera: **Video editor:**
+`handbrake`
+
 ## Contributing
 
 If you think something important is missing or should be different, open a pull request on this project.
