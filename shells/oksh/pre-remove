@@ -1,0 +1,3 @@
+#!/bin/sh -e
+remove-shell "/usr/bin/oksh"
+exit 0
