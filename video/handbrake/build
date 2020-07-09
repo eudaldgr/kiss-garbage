@@ -1,0 +1,32 @@
+#!/bin/sh -e
+
+for patch in *.patch; do
+    patch -Np0 < "$patch"
+done
+
+# build against external libs
+sed -i 's:.*contrib/.*::g' make/include/main.defs
+
+# Don't run autogen.sh.
+sed -i '/autogen.sh/d' gtk/module.rules
+
+./configure \
+    --prefix=/usr \
+    --force \
+    --verbose \
+    --harden \
+    --enable-x265 \
+    --disable-nls \
+    --disable-gtk4 \
+    --disable-flatpak \
+    --disable-df-fetch \
+    --disable-nvenc \
+    --disable-numa \
+    --disable-gtk \
+    --disable-gtk-update-checks \
+    . build
+
+make -C build
+make -C build \
+    DESTDIR="$1" \
+    install

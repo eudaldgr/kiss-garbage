@@ -1,0 +1,3 @@
+https://github.com/HandBrake/HandBrake/releases/download/1.3.3/HandBrake-1.3.3-source.tar.bz2
+patches/remove-dvdnav-dup.patch
+patches/fix-missing-x265-link-flag.patch
