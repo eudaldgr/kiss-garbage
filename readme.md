@@ -51,6 +51,9 @@ $ kiss b <pkg> && kiss i <pkg>
 :movie_camera: **Video editor:**
 `handbrake`
 
+:microscope: **Science:**
+`octave`
+
 ## Contributing
 
 If you think something important is missing or should be different, open a pull request on this project.
