@@ -1,0 +1,30 @@
+#!/bin/sh -e
+
+autoreconf -vif
+
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --infodir=/usr/share/info \
+    --mandir=/usr/share/man \
+    --localstatedir=/var \
+    --enable-shared \
+    --disable-static \
+    --disable-java \
+    --disable-docs \
+    --with-qt \
+    --with-fltk \
+    --with-opengl \
+    --with-glpk \
+    --with-x \
+    --with-qhull \
+    --with-sndfile
+
+make
+make DESTDIR="$1" install
+
+rm -rf "$1/usr/lib/charset.alias"
+
+# add helper to launch octave from dmenu etc.
+printf "#!/bin/sh\noctave --gui" > "$1/usr/bin/octave-gui"
+chmod +x "$1/usr/bin/octave-gui"
