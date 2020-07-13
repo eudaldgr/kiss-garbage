@@ -56,7 +56,6 @@ cd "$1/usr/lib/R/etc"
 for f in *; do
 	mv "$f" "$1/etc/R" && ln -sf "/etc/R/$f" "$f"
 done
-cd -
 
 rm -rf "$1/usr/lib/R/library/translations"
 rm -rf "$1/usr/share/R/licenses"
