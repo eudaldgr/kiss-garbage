@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --enable-shared \
+    --enable-threads \
+    --with-optim="$CXXFLAGS"
+
+make V=1
+make DESTDIR="$1" install
+
+# remove static libs
+rm "$1/usr/lib/"*.a
