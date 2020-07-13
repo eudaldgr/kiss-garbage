@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+sed -e 's|/CMAKE/|/cmake/|' -i CBLAS/CMakeLists.txt
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_Fortran_COMPILER=gfortran \
+    -DLAPACKE=ON \
+    -DCBLAS=ON \
+    -DBUILD_DEPRECATED=ON
+
+cmake --build   build
+cmake --install build
