@@ -52,7 +52,7 @@ $ kiss b <pkg> && kiss i <pkg>
 `handbrake`
 
 :microscope: **Science:**
-`octave`
+`octave` `R`
 
 ## Contributing
 
