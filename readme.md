@@ -39,8 +39,11 @@ $ kiss b <pkg> && kiss i <pkg>
 :coffee: **Java:**
 `gcc6-gcj`
 
-:iphone: **Chat:**
+:rice_scene: **Chat:**
 `birch`
+
+:iphone: **Smartphone:**
+`android-tools`
 
 :pencil2: **Image editor:**
 `gimp` `grafx2`
