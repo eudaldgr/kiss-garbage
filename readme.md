@@ -36,6 +36,9 @@ $ kiss b <pkg> && kiss i <pkg>
 :space_invader: **Games:**
 `mgba` `pingus`
 
+:video_game: **Game development:**
+`raylib`
+
 :coffee: **Java:**
 `gcc6-gcj`
 
@@ -51,7 +54,7 @@ $ kiss b <pkg> && kiss i <pkg>
 :black_nib: **Vector graphics editor:**
 `inkscape`
 
-:movie_camera: **Video editor:**
+:clapper: **Video editor:**
 `handbrake`
 
 :microscope: **Science:**
