@@ -60,9 +60,33 @@ $ kiss b <pkg> && kiss i <pkg>
 :microscope: **Science:**
 `octave` `R`
 
-## Kiss-way
+## To-do
 
-- [ ] Completely remove `gettext` & `intltool`
+- [ ] Finish `lxqt` DE
+- [ ] Fix `openjdk-7-bootstrap` build
+- [ ] Software i want to add
+    - [ ] `0ad`
+    - [ ] `iqmol`
+    - [ ] `k2pdfopt`
+    - [ ] `libreoffice`
+    - [x] `octave` - with full features
+    - [ ] `openshot`
+    - [ ] `scribus`
+    - [ ] `telegram-desktop`
+    - [ ] `tg`
+    - [ ] `vmd`
+
+## KISS way
+
+- [ ] Find a better repository structure.
+
+- [ ] Completely remove `gettext` & `intltool` from packages which require them.
+    - [x] `gimp`
+    - [ ] `gnumeric`
+    - [ ] `goffice`
+    - [ ] `libmypaint`
+    - [x] `lxmenu-data`
+    - [ ] `pingus` - scons packages?
 
 ## Contributing
 
