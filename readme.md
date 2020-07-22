@@ -60,6 +60,10 @@ $ kiss b <pkg> && kiss i <pkg>
 :microscope: **Science:**
 `octave` `R`
 
+## Kiss-way
+
+- [ ] Completely remove `gettext` & `intltool`
+
 ## Contributing
 
 If you think something important is missing or should be different, open a pull request on this project.
