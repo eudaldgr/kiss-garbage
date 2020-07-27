@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+meson \
+    --prefix=/usr \
+    . output
+
+ninja -C output
+ninja -C output install
+
+ln -sf /usr/bin/io.elementary.vala-lint "$1/usr/bin/vala-lint"
