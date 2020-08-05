@@ -1,6 +1,0 @@
-libpng
-scons     make
-sdl
-sdl-image
-sdl-mixer
-zlib
