@@ -19,7 +19,7 @@ gsl
 gtk+3
 gtkmm3
 icu
-lcms2
+lcms
 libICE
 libSM
 libX11
