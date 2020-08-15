@@ -18,7 +18,7 @@ ghostscript
 glib
 gtk+2
 json-c
-lcms2
+lcms
 libICE
 libSM
 libX11
