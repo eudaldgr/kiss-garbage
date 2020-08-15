@@ -7,7 +7,7 @@ alsa-lib make
 cups make
 freetype-harfbuzz make
 giflib make
-lcms  make
+lcms2 make
 libelf make
 libexecinfo make
 libffi make

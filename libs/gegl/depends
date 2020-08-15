@@ -10,7 +10,7 @@ fribidi
 gdk-pixbuf
 glib
 lame
-lcms
+lcms2
 libX11
 libXau
 libXdamage

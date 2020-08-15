@@ -12,7 +12,7 @@ gawk              make
 gcc6-gcj          make
 giflib            make
 gtk+2             make
-lcms              make
+lcms2             make
 libjpeg-turbo     make
 libpng            make
 libressl          make
