@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+for patch in *.patch; do
+    patch -Np1 -i "$patch"
+done
+
+# Don't use legacy path for AppStream metainfo file
+# https://gitlab.gnome.org/GNOME/pitivi/commit/e31aaf78ac9660fc480d55bede5f0f27878a1efc
+sed -i "s/install_dir : join_paths(get_option('datadir'), 'appdata')/install_dir : join_paths(get_option('datadir'), 'metainfo')/" data/meson.build
+
+sed -e "s|dependency('python3'|dependency('python3-embed'|" -i meson.build # Fix build with python 3.8
+
+meson \
+    --prefix=/usr \
+    -Db_lundef=false \
+    -Denable-tests=false \
+    -Ddisable-help=true \
+    . output
+
+ninja -C output
+ninja -C output install
