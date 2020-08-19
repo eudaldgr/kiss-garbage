@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix=/usr \
+    --disable-gtk-doc \
+    --with-package-name="GStreamer (KISS Linux)" \
+    --with-package-origin="http://k1ss.org/"
+
+make
+make DESTDIR="$1" install
