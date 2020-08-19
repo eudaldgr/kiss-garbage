@@ -1,0 +1,4 @@
+gobject-introspection
+meson                 make
+python
+python-cairo          make
