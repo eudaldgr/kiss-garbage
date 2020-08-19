@@ -1,0 +1,6 @@
+glib
+gst-plugins-base
+gstreamer
+libexecinfo
+libffi
+zlib
