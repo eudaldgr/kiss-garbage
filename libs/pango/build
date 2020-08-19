@@ -7,7 +7,7 @@ sed -i "/subdir('examples')/d" meson.build
 
 meson \
     --prefix=/usr \
-    -Dgir=false \
+    -Dgir=true \
     -Dgtk_doc=false \
     -Dintrospection=true \
     -Dinstalled_tests=false \
