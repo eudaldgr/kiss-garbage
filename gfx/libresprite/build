@@ -16,5 +16,5 @@ cmake -B build \
     -DUSE_SHARED_FREETYPE=ON \
     -DUSE_SHARED_GIFLIB=ON
 
-cmake --build build
+cmake --build   build
 cmake --install build
