@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+install -Dm755 xdg-open "$1/usr/bin/xdg-open"
