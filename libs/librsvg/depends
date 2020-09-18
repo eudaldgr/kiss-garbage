@@ -25,6 +25,7 @@ libxshmfence
 mesa
 pango
 pixman
+rust                  make
 tiff
 xz
 zlib
