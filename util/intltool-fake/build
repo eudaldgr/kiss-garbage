@@ -1,7 +1,0 @@
-#!/bin/sh -e
-
-install -Dm755 intltool "$1/usr/bin/intltool"
-
-for i in merge update extract perl ; do
-    ln -sf /usr/bin/intltool "$1/usr/bin/intltool-$i"
-done

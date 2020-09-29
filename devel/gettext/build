@@ -1,9 +1,0 @@
-#!/bin/sh -e
-
-cat << EOF > config.mak
-prefix=/usr
-DESTDIR="$1"
-CFLAGS=$CFLAGS -fPIC
-EOF
-
-make -j"$(nproc)" all install
