@@ -1,9 +1,0 @@
-#!/bin/sh -e
-
-./configure \
-    --prefix=/usr \
-    --without-x \
-    --disable-rpath
-
-make arch/misc && make
-make DESTDIR="$1" install
