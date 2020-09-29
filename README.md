@@ -22,28 +22,16 @@ $ kiss b <pkg> && kiss i <pkg>
 `abiword` `wordgrinder`
 
 :bar_chart: **Spreadsheet:**
-`gnumeric` `sc` `sc-im`
-
-:ledger: **Accounting system:**
-`ledger`
-
-:earth_africa: **Web browser:**
-`surf`
+`gnumeric`
 
 :zap: **Torrent:**
-`btfs` `btpd`
-
-:space_invader: **Games:**
-`mgba` `pingus`
+`btfs`
 
 :video_game: **Game development:**
 `raylib`
 
 :coffee: **Java:**
 `gcc6-gcj`
-
-:rice_scene: **Chat:**
-`birch`
 
 :iphone: **Smartphone:**
 `android-tools`
