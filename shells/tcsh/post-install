@@ -1,7 +1,0 @@
-#!/bin/sh
-
-install -Dm0644 "$1/csh.cshrc" "$1/etc/csh.cshrc"
-install -Dm0644 "$1/csh.login" "$1/etc/csh.login"
-ln -s tcsh "$1/bin/csh"
-ln -s tcsh.1 "$1/usr/share/man/man1/csh.1"
-rm -rf "$1/usr/share/locale"

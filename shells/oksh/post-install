@@ -1,3 +1,0 @@
-#!/bin/sh -e
-add-shell "/usr/bin/oksh"
-exit 0
