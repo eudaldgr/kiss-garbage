@@ -10,4 +10,5 @@ libXrender
 libpng
 libxcb
 ncurses
+pkgconf           make
 zlib
