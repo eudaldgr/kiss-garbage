@@ -6,11 +6,9 @@ fontconfig
 freetype-harfbuzz
 fribidi
 gdk-pixbuf
-gettext-fake      make
 gtk+3             make
 glib
 gtk+3
-intltool-fake     make
 libgsf            make
 librsvg           make
 libX11

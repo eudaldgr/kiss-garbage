@@ -7,7 +7,12 @@ automake \
     --add-missing \
     --gnu
 
-sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+#sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+for patch in *.patch; do
+    patch -Np1 -i "$patch"
+done
+
+rm -rf po
 
 ./configure \
     --prefix=/usr \
