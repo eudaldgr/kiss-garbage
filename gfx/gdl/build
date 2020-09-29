@@ -6,7 +6,10 @@ sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
+    --disable-nls \
     --disable-static
 
 make
 make DESTDIR="$1" install
+
+rm -r "$1/usr/share/gtk-doc"
