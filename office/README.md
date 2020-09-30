@@ -3,11 +3,11 @@
 Packaged some office-related builds!
 
 :page_with_curl: **Word processor:**
-`abiword`
+`abiword` `wordgrinder`
 
 :bar_chart: **Spreadsheet:**
 `gnumeric`
 
 ## Screenshots
 
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
