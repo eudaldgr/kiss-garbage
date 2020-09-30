@@ -12,7 +12,7 @@ Packaged some gfx-related builds!
 
 In order to build `gimp` and `inkscape`, we need to set this hooks:
 
-```
+```shell
 case $TYPE in
     pre-build)
         case $PKG in
