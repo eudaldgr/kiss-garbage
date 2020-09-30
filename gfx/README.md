@@ -25,6 +25,11 @@ case $TYPE in
             gtk+3)
                 sed -i "s/-introspection=no/-introspection=yes/g"       "$repo_dir/build"
             ;;
+            poppler)
+                _flags=-DENABLE_UNSTABLE_API_ABI_HEADERS=ON
+
+                sed -i "s/-DENABLE_CPP=ON/$_flags \0/"                  "$repo_dir/build"
+            ;;
         esac
     ;;
     post-build)
@@ -38,6 +43,11 @@ case $TYPE in
             gtk+3)
                 sed -i "s/-introspection=yes/-introspection=no/g"       "$repo_dir/build"
             ;;
+            poppler)
+                _flags=-DENABLE_UNSTABLE_API_ABI_HEADERS=ON
+
+                sed -i "s/$_flags //"                                   "$repo_dir/build"
+            ;;
         esac
     ;;
 esac
@@ -46,6 +56,6 @@ esac
 And rebuild these packages before install it:
 
 ```
-~ $ kiss b atk gdk-pixbuf gtk+3 pango
-~ $ kiss i atk gdk-pixbuf gtk+3 pango
+~ $ kiss b atk gdk-pixbuf gtk+3 pango poppler
+~ $ kiss i atk gdk-pixbuf gtk+3 pango poppler
 ```
