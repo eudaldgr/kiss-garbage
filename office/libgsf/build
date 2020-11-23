@@ -2,6 +2,8 @@
 
 sed -i -e 's/gsf-gnome//' -e 's/thumbnailer//' Makefile.*
 
+kiss l gobject-introspection && gi=en
+
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -10,7 +12,8 @@ sed -i -e 's/gsf-gnome//' -e 's/thumbnailer//' Makefile.*
     --disable-static \
     --without-gnome-vfs \
     --without-bonobo \
-    --enable-introspection
+    --with-gdk-pixbuf \
+    --"${gi:-dis}"able-introspection
 
 make
 make DESTDIR="$1" install
