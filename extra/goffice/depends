@@ -6,4 +6,5 @@ gtk+3
 libXslt
 libgsf
 librsvg
+libtool  make
 libxml2
