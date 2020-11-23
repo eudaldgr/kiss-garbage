@@ -1,1 +1,4 @@
-https://download.gnome.org/sources/gnumeric/1.12/gnumeric-1.12.47.tar.xz
+https://download.gnome.org/sources/gnumeric/1.12/gnumeric-1.12.48.tar.xz
+patches/remove-intltool.patch
+patches/remove-xml-parser.patch
+patches/remove-po-dir.patch

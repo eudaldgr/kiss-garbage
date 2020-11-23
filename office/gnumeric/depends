@@ -1,42 +1,8 @@
-atk
-bzip2
-cairo
-expat
-fontconfig
-freetype-harfbuzz
-fribidi
-gdk-pixbuf
-gettext           make
-glib
+bison   make
 goffice
 gtk+3
-libX11
-libXau
-libXcomposite
-libXcursor
-libXdamage
-libXext
-libXfixes
-libXi
-libXinerama
-libXrandr
-libXrender
 libXslt
-libXxf86vm
-libdrm
-libepoxy
-libffi
-libgsf
-libjpeg-turbo
-libpng
-librsvg
-libwebp
-libxcb
 libxml2
-libxshmfence
-mesa
-pango
-pixman
-tiff
-xz
-zlib
+perl    make
+pkgconf make
+python  make
