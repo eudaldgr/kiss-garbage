@@ -29,7 +29,7 @@
 - [x] openbox (via [community](https://github.com/kisslinux/community) repo)
 - [x] pcmanfm-qt
 - [x] qterminal
-- [ ] upower
+- [x] upower
 - [ ] xdg-utils
 
 ## Install
