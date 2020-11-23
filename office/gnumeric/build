@@ -13,6 +13,8 @@ done
 rm -rf po
 rm -rf po-functions
 
+# false positive
+# shellcheck disable=2016
 sed -i 's@LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po@cp@g' plugins/fn-*/Makefile.*
 sed -i 's/@INTLTOOL_XML_NOMERGE_RULE@/%xml : %xml.in ; cp $< $@/g' schemas/Makefile.*
 sed -i 's/@INTLTOOL_XML_RULE@/%xml : %xml.in ; cp $< $@/g' plugins/*/Makefile.*
