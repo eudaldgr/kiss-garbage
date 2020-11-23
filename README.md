@@ -24,6 +24,9 @@ $ kiss b <pkg> && kiss i <pkg>
 :bar_chart: **Spreadsheet:**
 `gnumeric`
 
+:ledger: **Accounting system:**
+`ledger`
+
 :zap: **Torrent:**
 `btfs`
 
@@ -70,8 +73,8 @@ $ kiss b <pkg> && kiss i <pkg>
 
 - [ ] Completely remove `gettext` & `intltool` from packages which require them.
     - [x] `gimp`
-    - [ ] `gnumeric`
-    - [ ] `goffice`
+    - [x] `gnumeric`
+    - [x] `goffice`
     - [ ] `libmypaint`
     - [x] `lxmenu-data`
     - [ ] `pingus` - scons packages?
