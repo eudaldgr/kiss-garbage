@@ -7,21 +7,31 @@ automake \
     --add-missing \
     --gnu
 
-#sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
-for patch in *.patch; do
-    patch -Np1 -i "$patch"
-done
+patch -p1 < remove-intltool.patch
 
 rm -rf po
+
+sed -i 's@LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po@cp@g' plugins/plot_*/Makefile.am
+sed -i 's/@INTLTOOL_XML_RULE@/plugin.xml : plugin.xml.in ; cp $< $@/g' plugins/*/Makefile.am
+
+kiss l gobject-introspection && gi=en
 
 ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
+    --disable-gtk-doc \
+    --without-lasem \
+    --with-gtk \
+    --with-config-backend=gsettings \
     --disable-static \
-    --enable-introspection
-
-printf 'all:\n\ttrue\ninstall:\n\ttrue\nclean:\n\ttrue\n' > po/Makefile
+    --"${gi:-dis}"able-introspection
 
 make
 make DESTDIR="$1" install
+
+# no static files
+find "$1" -name '*.la' -exec rm -rf {} +
+
+# no gtk-doc
+rm -rf "$1/usr/share/gtk-doc"
