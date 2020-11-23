@@ -1,15 +1,40 @@
 #!/bin/sh -e
 
+kiss l gobject-introspection && gi=en
+
 ./configure \
     --prefix=/usr \
-    --with-gtk3 \
-    --enable-shared \
+    --disable-maintainer-mode \
     --disable-static \
-    --enable-plugins="applix babelfish bmp clarisworks collab docbook command \
-        eml epub freetranslation garble gdict gimp google hancom hrtext iscii \
-        kword latex loadbindings mht mif mswrite openwriter openxml opml paint \
+    --disable-default-plugins \
+    --disable-builtin-plugins \
+    --disable-collab-backend-telepathy \
+    --enable-clipart \
+    --enable-statusbar \
+    --enable-templates \
+    --with-gio \
+    --without-gnomevfs \
+    --without-gtk2 \
+    --disable-debug \
+    --with-goffice \
+    --without-libical \
+    --enable-print \
+    --disable-collab-backend-xmpp \
+    --disable-collab-backend-tcp \
+    --disable-collab-backend-service \
+    --without-evolution-data-server \
+    --"${gi:-dis}"able-introspection \
+    --without-champlain \
+    --without-redland \
+    --disable-spell \
+    --enable-plugins="applix babelfish bmp clarisworks collab docbook eml epub \
+        freetranslation garble gdict gimp google hancom hrtext iscii kword \
+        latex loadbindings mht mif mswrite openwriter openxml opml paint \
         passepartout pdb pdf presentation s5 sdw t602 urldict wikipedia wml \
         xslfo"
 
 make
 make DESTDIR="$1" install
+
+# no static files
+find "$1" -name '*.la' -exec rm -rf {} +
