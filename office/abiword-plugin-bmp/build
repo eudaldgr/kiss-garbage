@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+_plug="${0##*abiword-plugin-}"
+_plug="${_plug%%/build}"
+
 ./configure \
     --prefix=/usr \
     --disable-maintainer-mode \
@@ -9,7 +12,7 @@
     --disable-collab-backend-telepathy \
     --enable-clipart \
     --enable-statusbar \
-    --disable-templates \
+    --enable-templates \
     --with-gio \
     --without-gnomevfs \
     --without-gtk2 \
@@ -25,16 +28,14 @@
     --without-champlain \
     --without-redland \
     --disable-spell \
-    --disable-plugins
+    --enable-plugins="$_plug"
 
 make
-make DESTDIR="$1" install
+
+(
+    cd "plugins/$_plug"
+    make DESTDIR="$1" install
+)
 
 # no static files
 find "$1" -name '*.la' -exec rm -rf {} +
-
-# remove unused stuff
-rm -rf "$1/usr/share/abiword-3.0/templates"
-rm -rf "$1/usr/share/abiword-3.0/strings"
-find "$1" -name 'system.profile-*' -exec rm -rf {} +
-find "$1" -name 'readme*' -exec rm -rf {} +

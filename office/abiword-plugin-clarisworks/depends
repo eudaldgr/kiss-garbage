@@ -1,0 +1,15 @@
+abiword
+boost
+cairo
+fribidi
+goffice
+gtk+3
+libX11
+libXslt
+libgsf
+libjpeg-turbo
+libpng
+librsvg
+perl          make
+pkgconf       make
+wv
