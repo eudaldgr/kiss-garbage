@@ -1374,4 +1374,16 @@ Only in b: .configure.un~
  ###########
  # iso-codes
  ###########
-Only in b: configure~
+--- a/extensions/goat-exercises/Makefile.in
++++ b/extensions/goat-exercises/Makefile.in
+@@ -1424,8 +1424,8 @@
+ @HAVE_WINDRES_TRUE@		-I"`echo $(top_builddir) | sed 's%/\+%/%'`"\
+ @HAVE_WINDRES_TRUE@		$(GIMPPLUGINRC) $@
+ 
+-org.gimp.extension.goat-exercises.metainfo.xml: org.gimp.extension.goat-exercises.metainfo.xml.in $(wildcard $(top_srcdir)/po-plug-ins/*.po)
+-	$(INTLTOOL_MERGE) $(top_srcdir)/po-plug-ins $< $(@) -x -u -c $(top_builddir)/po-plug-ins/.intltool-merge-cache
++org.gimp.extension.goat-exercises.metainfo.xml: org.gimp.extension.goat-exercises.metainfo.xml.in
++	cp $< $@
+ 
+ .PHONY: org.gimp.extension.goat-exercises.metainfo.xml
+ 

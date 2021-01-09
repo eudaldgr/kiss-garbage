@@ -4,26 +4,46 @@ for patch in *.patch; do
     patch -Np1 -i "$patch"
 done
 
+sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure
+
 ./configure \
     --prefix=/usr \
     --libexecdir=/usr/bin \
     --sysconfdir=/etc \
     --mandir=/usr/share/man \
-    --disable-altivec \
-    --disable-static \
-    --disable-python \
-    --disable-alsatest \
-    --disable-nls \
-    --disable-silent-rules \
-    --disable-glibtest \
-    --without-webkit \
+    --enable-default-binary \
+    --disable-check-update \
     --enable-mp \
-    --disable-dependency-tracking \
-    --enable-gimp-console \
+    --with-appdata-test \
+    --with-xmc \
+    --without-libbacktrace \
+    --without-webkit \
+    --without-xvfb-run \
+    --disable-altivec \
+    --disable-mmx \
+    --enable-sse \
+    --disable-gtk_doc \
+    --enable-vector-icons \
     --without-aa \
-    --disable-check-update
+    --with-x \
+    --without-libheif \
+    --without-javascript \
+    --with-jpeg2000 \
+    --without-lua \
+    --without-libmng \
+    --without-openexr \
+    --without-gs \
+    --without-python \
+    --without-gudev \
+    --without-libunwind \
+    --without-vala \
+    --without-webp \
+    --without-wmf \
+    --disable-nls \
+    --without-libxpm
 
-make -j"$(nproc)"
+make
 make DESTDIR="$1" install
 
 rm -rf "$1/usr/share/gtk-doc"
+find "$1" -name '*.la' -type f -exec rm -rf {} +
