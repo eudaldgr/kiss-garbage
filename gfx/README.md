@@ -10,7 +10,50 @@ Packaged some gfx-related builds!
 
 ## kiss-hooks
 
-In order to build `gimp` and `inkscape`, we need to set this hooks:
+In order to build `gimp`, we need to set this hooks:
+
+```shell
+case $TYPE in
+    pre-build)
+        case $PKG in
+            atk)
+                sed -i "s/-Dintrospection=false/-Dintrospection=true/g"       "$repo_dir/build"
+            ;;
+            gdk-pixbuf)
+                sed -i "s/-Dgir=false/-Dgir=true/g"                           "$repo_dir/build"
+            ;;
+            gtk+3)
+                sed -i "s/-introspection=no/-introspection=yes/g"             "$repo_dir/build"
+                sed -i 's/rm/#rm/g'                                           "$repo_dir/build"
+            ;;
+            pango)
+                sed -i "s/-Dintrospection=disabled/-Dintrospection=enabled/g" "$repo_dir/build"
+                sed -i "s/-Dgir=false/-Dgir=true/g"                           "$repo_dir/build"
+            ;;
+        esac
+    ;;
+    post-build)
+        case $PKG in
+            atk)
+                sed -i "s/-Dintrospection=true/-Dintrospection=false/g"       "$repo_dir/build"
+            ;;
+            gdk-pixbuf)
+                sed -i "s/-Dgir=true/-Dgir=false/g"                           "$repo_dir/build"
+            ;;
+            gtk+3)
+                sed -i "s/-introspection=yes/-introspection=no/g"             "$repo_dir/build"
+                sed -i 's/#rm/rm/g'                                           "$repo_dir/build"
+            ;;
+            pango)
+                sed -i "s/-Dintrospection=enabled/-Dintrospection=disabled/g" "$repo_dir/build"
+                sed -i "s/-Dgir=true/-Dgir=false/g"                           "$repo_dir/build"
+            ;;
+        esac
+    ;;
+esac
+```
+
+In order to build `inkscape`, we need to set this hooks:
 
 ```shell
 case $TYPE in
@@ -51,11 +94,4 @@ case $TYPE in
         esac
     ;;
 esac
-```
-
-And rebuild these packages before install it:
-
-```
-~ $ kiss b atk gdk-pixbuf gtk+3 pango poppler
-~ $ kiss i atk gdk-pixbuf gtk+3 pango poppler
 ```

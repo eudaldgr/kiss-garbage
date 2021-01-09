@@ -75,7 +75,7 @@ $ kiss b <pkg> && kiss i <pkg>
     - [x] `gimp`
     - [x] `gnumeric`
     - [x] `goffice`
-    - [ ] `libmypaint`
+    - [x] `libmypaint`
     - [x] `lxmenu-data`
     - [ ] `pingus` - scons packages?
 
