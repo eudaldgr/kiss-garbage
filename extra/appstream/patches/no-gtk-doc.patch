@@ -1,0 +1,18 @@
+--- a/docs/meson.build
++++ b/docs/meson.build
+@@ -16,14 +16,7 @@
+     install: true,
+     install_dir: join_paths(get_option('mandir'), 'man1'),
+     command: [
+-        xsltproc,
+-        '--nonet',
+-        '--stringparam', 'man.output.quietly', '1',
+-        '--stringparam', 'funcsynopsis.style', 'ansi',
+-        '--stringparam', 'man.th.extra1.suppress', '1',
+-        '-o', '@OUTPUT@',
+-        'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
+-        '@INPUT@'
++        'cp', '@INPUT@', '@OUTPUT@'
+     ]
+ )
+ 
