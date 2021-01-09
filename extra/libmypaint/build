@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+#sed -i "s/if \`\$INTLTOOL_PERL -e/if test -z \`\$INTLTOOL_PERL -e/g" configure
+
+./configure \
+    --prefix=/usr \
+    --enable-i18n=no
+
+make
+make DESTDIR="$1" install
