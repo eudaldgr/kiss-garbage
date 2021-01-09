@@ -6,8 +6,7 @@ cmake -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DEXIV2_BUILD_SAMPLES=OFF \
-    -DFLAG=1
+    -DEXIV2_BUILD_SAMPLES=OFF
 
 cmake --build   build
 cmake --install build
