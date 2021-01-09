@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+export DESTDIR="$1"
+
+meson \
+    --prefix=/usr \
+	-Ddep11=true \
+	-Dbuilder=true \
+	-Drpm=false \
+	-Dalpm=false \
+	-Dfonts=true \
+	-Dstemmer=false \
+	-Dman=false \
+	-Dgtk-doc=false \
+	-Dintrospection=true \
+    . output
+
+ninja -C output
+ninja -C output install
